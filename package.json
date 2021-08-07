@@ -1,0 +1,50 @@
+{
+  "name": "node-typescript-template",
+  "version": "1.0.0",
+  "description": "A Node.js project template using Typescript",
+  "main": "dist/server.js",
+  "scripts": {
+    "build-ts": "tsc -p tsconfig.json",
+    "build": "npm run lint && npm run build-ts",
+    "dev": "NODE_ENV=development npm run build && npm run watch-debug",
+    "lint": "eslint --ignore-path .gitignore \"./src/**/*\"",
+    "prettier:check": "prettier \"src/**/*.{ts,tsx,html,css,js}\" --check",
+    "prettier:fix": "prettier \"src/**/*.{ts,tsx,html,css,js}\" --write",
+    "serve-debug": "nodemon --inspect dist/server.js",
+    "start": "NODE_ENV=production node dist/server.js",
+    "watch-debug": "NODE_ENV=development  concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold\"  \"npm run watch-ts\" \"npm run serve-debug\"",
+    "watch-ts": "NODE_ENV=development tsc -w --preserveWatchOutput -p tsconfig.json"
+  },
+  "keywords": [
+    "typescript",
+    "node",
+    "template"
+  ],
+  "author": {
+    "name": "cechus"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "ws": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.1",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^16.4.13",
+    "@types/ws": "^7.4.7",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "concurrently": "^6.2.0",
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
+  }
+}
